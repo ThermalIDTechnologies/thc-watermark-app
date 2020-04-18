@@ -4,6 +4,7 @@ import {
   ImageUploadContainer,
   ImageUploadProcess,
   UploadedImage,
+  StyledForm
 } from "./../components/styles/StyledImageUploader"
 import { useSpring, config } from "react-spring"
 
@@ -15,6 +16,7 @@ const IndexPage = () => {
   const [error, setError] = useState("")
   const [publicId, setPublicId] = useState("")
   const [version, setVersion] = useState("")
+  const [transformation, setTransformation] = useState("thc_bl_watermark.thc_center_watermark")
 
   const uploadImage = async e => {
     const files = e.target.files
@@ -55,12 +57,37 @@ const IndexPage = () => {
     config: config.gentle,
   })
 
+  const handleTransformationChange = (changeEvent) => {
+    setTransformation(changeEvent.target.value)
+  }
+
   return (
     <Layout>
       <ImageUploadProcess>
+        <li>Choose which division you want to watermark your image with (you can change them once the image is uploaded too).</li>
         <li>Upload the image you want to watermark.</li>
         <li>Click on watermarked image to download!</li>
       </ImageUploadProcess>
+      <StyledForm>
+        <div>
+          <label>
+            <input type="radio" value="thc_bl_watermark.thc_center_watermark" checked={transformation === "thc_bl_watermark.thc_center_watermark"} onChange={handleTransformationChange} />
+            THC Solutions Watermark
+          </label>
+        </div>
+        <div>
+          <label>
+            <input type="radio" value="tidt_bl_watermark.tidt_center_watermark" checked={transformation === "tidt_bl_watermark.tidt_center_watermark"} onChange={handleTransformationChange} />
+            Thermal ID Tech Watermark
+          </label>
+        </div>
+        <div>
+          <label>
+            <input type="radio" value="oss_bl_watermark.oss_center_watermark" checked={transformation === "oss_bl_watermark.oss_center_watermark"} onChange={handleTransformationChange} />
+            Oil Shop Supply Watermark
+          </label>
+        </div>
+      </StyledForm>
       <ImageUploadContainer>
         <input
           type="file"
@@ -80,11 +107,11 @@ const IndexPage = () => {
           <SkeletonLoader style={imgFade} width="300px" height="300px" />
         ) : (
           <a
-            href={`https://res.cloudinary.com/crjars/image/upload/c_scale,fl_attachment,t_thc_bl_watermark.thc_center_watermark,w_800/v${version}/${publicId}.jpg`}
+            href={`https://res.cloudinary.com/crjars/image/upload/c_scale,fl_attachment,t_${transformation},w_800/v${version}/${publicId}.jpg`}
           >
             <UploadedImage
               style={imgFade}
-              src={`https://res.cloudinary.com/crjars/image/upload/c_scale,t_thc_bl_watermark.thc_center_watermark,w_800/v${version}/${publicId}.jpg`}
+              src={`https://res.cloudinary.com/crjars/image/upload/c_scale,t_${transformation},w_800/v${version}/${publicId}.jpg`}
             />
           </a>
         )}

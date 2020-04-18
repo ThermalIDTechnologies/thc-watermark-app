@@ -3,7 +3,7 @@ import { a } from "react-spring"
 
 export const ImageUploadContainer = styled.div`
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 250px;
@@ -30,5 +30,11 @@ export const LayoutContainer = styled.div`
     min-height: -moz-calc(100vh - 340px); /* Firefox */
     min-height: -webkit-calc(100vh - 340px); /* Chrome, Safari */
     min-height: calc(100vh - 340px);
+  }
+`
+
+export const StyledForm = styled.form`
+  input {
+    margin-right: 5px;
   }
 `
