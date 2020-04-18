@@ -100,7 +100,7 @@ const IndexPage = () => {
           <>
             <UploadedImage
               style={imgFade}
-              src="https://res.cloudinary.com/crjars/image/upload/t_thc_bl_watermark.thc_center_watermark/v1586456218/10040300_EmployeesMustWashHandsB4ReturningNotice_Vinyl_3.5x5-01.jpg"
+              src={`https://res.cloudinary.com/crjars/image/upload/t_${transformation}/v1586456218/10040300_EmployeesMustWashHandsB4ReturningNotice_Vinyl_3.5x5-01.jpg`}
             />
           </>
         ) : loading ? (
