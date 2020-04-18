@@ -22,7 +22,7 @@ const IndexPage = () => {
     const files = e.target.files
     const formData = new FormData()
     formData.append("file", files[0])
-    formData.append("upload_preset", "stickers")
+    formData.append("upload_preset", "watermarkImages")
     setLoading(true)
     setError("")
 
