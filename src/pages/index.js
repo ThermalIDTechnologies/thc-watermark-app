@@ -87,6 +87,12 @@ const IndexPage = () => {
             Oil Shop Supply Watermark
           </label>
         </div>
+        <div>
+          <label>
+            <input type="radio" value="up_safety_bl_watermark.up_safety_center_watermark" checked={transformation === "up_safety_bl_watermark.up_safety_center_watermark"} onChange={handleTransformationChange} />
+            UP Safety Solutions Watermark
+          </label>
+        </div>
       </StyledForm>
       <ImageUploadContainer>
         <input
